@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payment</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.75),
+          rgba(0, 0, 0, 0.85)
+        ),
+        url('https://png.pngtree.com/thumb_back/fh260/background/20191113/pngtree-blue-movie-film-texture-background-image_321897.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .payment-box {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 40px 50px;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #FFD700;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    #amount {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #ddd;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #00c853, #43a047);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #00b347, #2e7d32);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 480px) {
+      .payment-box {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      #amount {
+        font-size: 18px;
+      }
+
+      .btn {
+        width: 100%;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-box">
+    <h1>Confirm Your Payment</h1>
+    <p id="amount">Total Amount: ₹0</p>
+    <button class="btn" onclick="payNow()">Pay with Google Pay</button>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const totalCost = localStorage.getItem("totalCost") || 0;
+      document.getElementById("amount").innerText = `Total Amount: ₹${totalCost}`;
+    };
+
+    function payNow() {
+      alert("✅ Payment Successful!");
+      window.location.href = "success.html";
+    }
+  </script>
+</body>
+</html>

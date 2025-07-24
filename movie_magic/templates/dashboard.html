@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Dashboard</title>
+  <style>
+    body.homepage {
+      background-image: url('https://tse4.mm.bing.net/th/id/OIP.faYkJajiFC2n1XmX_9JfPgAAAA?pid=Api&P=0&h=180');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .top-bar {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .top-bar input {
+      padding: 8px;
+      width: 250px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .movie-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .movie-card {
+      width: 180px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .movie-name {
+      padding: 10px;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    .back-arrow {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="homepage">
+  <div class="top-bar">
+    <span class="back-arrow" onclick="goBack()">⬅ Back</span>
+    <input type="text" id="searchInput" placeholder="Search Telugu Movies...">
+  </div>
+
+  <div class="movie-gallery">
+    <!-- Existing movies -->
+    <div class="movie-card">
+      <a href="details.html?movie=War&theater=PVR Cinemas&city=Hyderabad&cost=180">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.FL2oEXsInvzoZh2-Bh_iCQHaJ3?pid=Api&P=0&h=180" alt="War">
+        <p class="movie-name">War</p>
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="details.html?movie=Pushpa 2&theater=INOX&city=Vizag&cost=200">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.yfiJs6jQUF2j_VfGl13M4wHaJQ?pid=Api&P=0&h=180" alt="Pushpa 2">
+        <p class="movie-name">Pushpa 2</p>
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="details.html?movie=DevDas&theater=INOX&city=Vizag&cost=100">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.o2HFuHWsywFVkl8n2VbztQHaLi?pid=Api&P=0&h=180" alt="DevDas">
+        <p class="movie-name">DevDas</p>
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="details.html?movie=Hanuman&theater=ICinemas&city=Nellore&cost=250">
+        <img src="https://indiaglitz-media.s3.amazonaws.com/telugu/home/hanuman-review-3.jpg" alt="Hanuman">
+        <p class="movie-name">Hanuman</p>
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="details.html?movie=Pokiri&theater=Venkateswara&city=Kavali&cost=200">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.-Uq35Wc2YXG6tbNuC0Qc_gHaLH?pid=Api&P=0&h=180" alt="Pokiri">
+        <p class="movie-name">Pokiri</p>
+      </a>
+    </div>
+
+    <!-- New movies added -->
+    <div class="movie-card">
+      <a href="details.html?movie=Devera&theater=Asian Cinemas&city=Hyderabad&cost=220">
+        <img src="https://static.toiimg.com/photo/msid-113734788/113734788.jpg?31084" alt="Devera">
+        <p class="movie-name">Devera</p>
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="details.html?movie=Rajashab&theater=Sri Ram&city=Guntur&cost=180">
+        <img src="https://image.tmdb.org/t/p/original/t4hun38f8FC2sP2qTOEBX89bSj7.jpg" alt="Rajashab">
+        <p class="movie-name">Rajashab</p>
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="details.html?movie=Kanam&theater=Prasads&city=Vijayawada&cost=160">
+        <img src="https://www.chitramala.in/wp-content/uploads/2018/04/Kanam-Poster.jpg" alt="Kanam">
+        <p class="movie-name">Kanam</p>
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="details.html?movie=MCA&theater=Ramakrishna&city=Tirupati&cost=150">
+        <img src="https://wallpapercave.com/wp/wp8285303.jpg" alt="MCA">
+        <p class="movie-name">MCA</p>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const movieCards = document.querySelectorAll(".movie-card");
+
+    searchInput.addEventListener("input", function () {
+      const query = searchInput.value.toLowerCase();
+
+      movieCards.forEach(function (card) {
+        const movieName = card.querySelector(".movie-name").textContent.toLowerCase();
+        if (movieName.includes(query)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>
